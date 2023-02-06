@@ -1,0 +1,5 @@
+
+GraphX.color_img = False
+GraphX.n_points = 3000
+GraphX.bs = 4
+

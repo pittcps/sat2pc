@@ -1,0 +1,10 @@
+include 'configs/common.gin'
+GraphX.bs = 2
+GraphX.name = 'map_test'
+GraphX.img_enc = @cnn18_enc
+GraphX.pc_enc = @pc_enc
+GraphX.pc_dec = @pc_resgraphxdec
+GraphX.adain = True
+GraphX.projection = True
+GraphX.n_points = 3000
+GraphX.checkpoint_folder = None

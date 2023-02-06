@@ -1,0 +1,13 @@
+torch
+torchvision
+numpy
+scipy
+visdom
+matplotlib <= 3.1.0
+slackclient
+tensorboard
+imageio
+gin-config
+future
+sympy
+git-python
