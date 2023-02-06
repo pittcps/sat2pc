@@ -57,9 +57,6 @@ if __name__ == "__main__":
     if args.dataset_split != 'test':
         args.results="./results/" + args.dataset_split + ".res"
     
-    if args.ckpt_path is None:
-        args.ckpt_path = "./graphx_{}.pth".format(args.dataset)
-    
     main(args)
     
     
