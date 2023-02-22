@@ -221,7 +221,7 @@ def calc_area_difference_percentage_over_gt_area(gt_plane_boundaries, pred_plane
     return diffs
 
 
-def calc_planar_metrics(dataset_dir, results_dir, prepared_prediction_data_dir, segmentation_results_dir, segmented_gt_planes_dir, metric_saving_dir, model, debug):
+def calc_planar_metrics(dataset_dir, results_dir, prepared_prediction_data_dir, segmentation_results_dir, segmented_gt_planes_dir, metric_saving_dir, model, is_dense, debug):
 
     image_dir = os.path.join(dataset_dir, "image_filtered")
     ann_dir = os.path.join(dataset_dir, "annotation") 
@@ -259,9 +259,13 @@ def calc_planar_metrics(dataset_dir, results_dir, prepared_prediction_data_dir, 
         og_lidar -= og_mean
         og_lidar /= og_std
 
-        dense =  np.asarray(data_util.load_json(os.path.join(dense_ann_dir, name + '.json'))['lidar']).T
-        dense_mean = np.mean(dense, 0, dtype='float64', keepdims=True)
-        dense_std = np.std(dense, 0, dtype='float64', keepdims=True)
+        if not is_dense:
+            dense =  np.asarray(data_util.load_json(os.path.join(dense_ann_dir, name + '.json'))['lidar']).T
+            dense_mean = np.mean(dense, 0, dtype='float64', keepdims=True)
+            dense_std = np.std(dense, 0, dtype='float64', keepdims=True)
+        else:
+            dense_mean = og_mean
+            dense_std = og_std
 
         gt_data[:, :3] = (gt_data[:, :3] - dense_mean)/dense_std
         pred_data[:, :3] = (pred_data[:, :3] - og_mean)/og_std
