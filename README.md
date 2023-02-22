@@ -48,7 +48,7 @@ This command will install the required packages.
 
 # Data
 
-The dataset from the paper can be dowloaded from [here](https://pitt-my.sharepoint.com/:u:/r/personal/yor10_pitt_edu/Documents/Shared%20with%20Everyone/sat2pc_github_repo_data/datasets.zip?csf=1&web=1&e=czhXgd).
+The dataset from the paper can be dowloaded from [here](https://pitt-my.sharepoint.com/:f:/g/personal/yor10_pitt_edu/Eo4HLZ9ysERBkBem0wl5HZ8BBcqzDruuI77PhfqL_kWIWg).
 
 # Usage
 
