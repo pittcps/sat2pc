@@ -64,12 +64,9 @@ def main(args):
     print('Args: ', args)
 
     start_epoch = 0
-    prefix, ext = os.path.splitext(args.ckpt_path)
-    ckpts = glob.glob(prefix + "-*" + ext)
-    ckpts.sort(key=lambda x: int(re.search(r"-(\d+){}".format(ext), os.path.split(x)[1]).group(1)))
-    
-    if ckpts:
-        checkpoint = torch.load(ckpts[-1], map_location=device) # load last checkpoint
+
+    if args.ckpt_path:
+        checkpoint = torch.load(args.ckpt_path, map_location=device) # load last checkpoint
         model.load_state_dict(checkpoint["model"])
         start_epoch = checkpoint["epochs"]
         del checkpoint
@@ -88,13 +85,13 @@ def main(args):
 if __name__ == "__main__":
     import argparse
     parser = argparse.ArgumentParser()
-    parser.add_argument("--config", default = "./configs/graphx.gin")
+    parser.add_argument("--config", default = "./configs/sat2pc.gin")
 
     parser.add_argument("--use-cuda", action="store_true")
     
     parser.add_argument("--dataset", default="sat2lidar")
     parser.add_argument("--dataset-split", default="test")
-    parser.add_argument("--data-dir", default="./dataset/")
+    parser.add_argument("--data-dir", default=".\datasets\extended_dataset\\aggregated\\splitted")
     
     parser.add_argument("--ckpt-path")
     parser.add_argument("--results", default="./results/test.res")
