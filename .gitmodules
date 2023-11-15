@@ -1,0 +1,3 @@
+[submodule "sat2map"]
+	path = sat2map
+	url = https://github.com/pittcps/sat2pc_height_estimation.git
